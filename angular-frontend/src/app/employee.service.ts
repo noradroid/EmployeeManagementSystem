@@ -21,6 +21,14 @@ export class EmployeeService {
     );
   }
 
+  getEmployeeById(id: number): Observable<Employee> {
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.get<Employee>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`fetched employee ${id}`)),
+      catchError(this.handleError<Employee>('getEmployeeById'))
+    );
+  }
+
   private log(message: string) {
     console.log(message);
   }

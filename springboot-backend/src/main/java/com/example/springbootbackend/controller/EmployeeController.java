@@ -24,4 +24,10 @@ public class EmployeeController {
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
+   
+    @GetMapping("/employees/{id}")
+    public Employee getEmployeeById(Long id) {
+        return employeeRepository.getReferenceById(id);
+    }
+    
 }
